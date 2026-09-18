@@ -1,0 +1,16 @@
+# Virtual environment
+.venv/
+
+# Environment variables - never commit credentials
+.env
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/
