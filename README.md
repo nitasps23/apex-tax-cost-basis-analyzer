@@ -72,6 +72,12 @@ apex-tax-cost-basis-analyzer/
 
 ---
 
+## BI Report
+
+[View Power BI Dashboard →](https://app.powerbi.com/view?r=eyJrIjoiZGYwM2YwN2EtMTQ5Yi00MDM1LTlkOTMtYzI3ZDJlYzFjMzgwIiwidCI6IjQ1ZDU0MDVhLWIwOTUtNDIwZS1hM2NhLWYzMzk1YWViMzY1NCIsImMiOjF9)
+
+---
+
 ## Author
 
 **Nita Sokphoodsa**  
