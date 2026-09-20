@@ -1,8 +1,7 @@
 # Tax & Cost Basis Data Quality Analyzer
 
-> 🚧 **Work in progress** - built specifically to explore the 
-> workflows of a Tax & Cost Basis operations team at a fintech 
-> company. README and documentation being expanded.
+> Built specifically to explore the workflows of a Tax & Cost Basis
+> operations team at a fintech company.
 
 ---
 
