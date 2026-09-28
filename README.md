@@ -18,7 +18,7 @@ using the Claude API.
 ## Tech Stack
 
 SQL · Python · PostgreSQL · Claude AI · Pandas · 
-Plotly · Power BI · Jupyter Notebook
+Plotly · Power BI · Jupyter Notebook · Shell (Bash) · PSQL
 
 ---
 
@@ -33,6 +33,21 @@ apex-tax-cost-basis-analyzer/
 ├── sql/ — data quality validation queries
 └── visualizations/ — Plotly HTML charts
 ```
+
+---
+
+## How To Run
+
+**Phase 1 — Data Setup (run once):**
+```bash
+bash setup_data.sh
+```
+
+**Phase 2 — Analysis Pipeline (run anytime):**
+```bash
+bash run_pipeline.sh
+```
+
 ---
 
 ## What's Covered
@@ -41,9 +56,13 @@ apex-tax-cost-basis-analyzer/
   (transactions, cost basis lots, tax reporting)
 - Six SQL data quality checks - null detection, calculation 
   validation, exception tracking, discrepancy analysis
+- Advanced SQL analysis — window functions, FIFO cost basis 
+  simulation, outlier detection, exception priority scoring
 - Python analysis with Plotly visualizations
 - Claude AI API integration for automated management reporting
+  and deep-dive analysis
 - Power BI dashboard for operational stakeholder reporting
+- Shell pipeline automating the full workflow end to end
 - SOP document for monthly data quality review process
 
 ---
@@ -55,6 +74,12 @@ apex-tax-cost-basis-analyzer/
   precision
 - Date columns loaded via pandas need explicit dtype declaration 
   to avoid text/DATE type mismatches
+- File paths in notebooks use `os.path.dirname(
+  os.path.abspath(''))` to resolve project root reliably 
+  regardless of where the script is called from — ensures 
+  outputs always save to the correct subfolder
+- PSQL long output routed to files using the `-o` flag 
+  rather than scrolling through the terminal pager
 - Synthetic data intentionally seeded with real-world quality 
   issues - null prices, zero quantities, status errors, 
   reporting discrepancies
@@ -64,7 +89,7 @@ apex-tax-cost-basis-analyzer/
 ## What I Would Improve With More Time
 
 - Connect Power BI directly to PostgreSQL for live refresh
-  (currently loads from CSV)
+  (currently loads from CSV) and fine-tune reports
 - Seed calculation variances into synthetic data so 
   gain/loss validation checks return exceptions
 - Expand README with setup instructions and full findings
@@ -81,3 +106,4 @@ apex-tax-cost-basis-analyzer/
 
 **Nita Sokphoodsa**  
 Data & BI Analyst
+*Project developed with Claude AI assistance*
