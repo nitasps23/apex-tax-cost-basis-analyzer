@@ -109,5 +109,5 @@ bash run_pipeline.sh
 ## Author
 
 **Nita Sokphoodsa**  
-Data & BI Analyst
+Data & BI Analyst  
 *Project developed with Claude AI assistance*
