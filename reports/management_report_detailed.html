@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>management_report_detailed.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p>TAX &amp; COST BASIS DATA QUALITY REPORT
+Generated: 2026-09-27 22:12</p>
+<h1 id="executive-summary">==================================================
+EXECUTIVE SUMMARY</h1>
+<h1 id="monthly-data-quality-report">Monthly Data Quality Report</h1>
+<p><strong>Tax &amp; Cost Basis Operations | Senior Analyst Review</strong></p>
+<hr>
+<h2 id="1-executive-summary">1. Executive Summary</h2>
+<p>This month's data quality posture is materially concerning, with an <strong>8.2% error rate across 500 transactions</strong> — a threshold that typically triggers regulatory scrutiny and warrants immediate remediation before month-end close. The most critical exposure is <strong>117 transactions unreported to the IRS</strong>, representing potential penalties that could far exceed the operational cost of resolution, particularly given the <strong>$76,310.34 net gain/loss position</strong> that regulators will expect to reconcile cleanly. Concentrated exceptions in <strong>TSLA (7 discrepancies), META (5), and MSFT (5)</strong> suggest systemic processing failures in specific security workflows rather than random data noise, pointing to a root-cause issue that must be diagnosed at the pipeline level.</p>
+<hr>
+<h2 id="2-top-3-issues-requiring-immediate-attention">2. Top 3 Issues Requiring Immediate Attention</h2>
+<h3 id="-priority-1-117-unreported-transactions-to-the-irs">🔴 Priority 1: 117 Unreported Transactions to the IRS</h3>
+<ul>
+<li><strong>117 out of 500 transactions (23.4%)</strong> have not been reported to the IRS.</li>
+<li>This is a <strong>hard compliance deadline risk</strong>, not a data quality preference. Late or missing 1099-B filings carry penalties of <strong>$310 per form</strong> (2024 IRS schedule) for intentional disregard, with no cap in egregious cases.</li>
+<li><strong>Immediate action:</strong> Freeze any affected account closures or transfers, assign a dedicated analyst to triage which transactions fall within the current reporting window, and escalate to Legal/Compliance within <strong>24 hours</strong>.</li>
+</ul>
+<hr>
+<h3 id="-priority-2-28-transactions-with-missing-cost-basis">🔴 Priority 2: 28 Transactions with Missing Cost Basis</h3>
+<ul>
+<li>Missing cost basis on <strong>28 transactions</strong> means gain/loss calculations are either estimated, zeroed out, or defaulted — all of which create <strong>incorrect tax lot reporting</strong>.</li>
+<li>The MSFT position alone carries a <strong>-$169,044.15 total loss</strong> with 5 discrepancies, and TSLA shows <strong>+$161,783.53 in gains</strong> with 7 discrepancies. If cost basis is absent or wrong on these high-value positions, the tax impact misstatement could be <strong>six figures</strong>.</li>
+<li><strong>Immediate action:</strong> Cross-reference custodian records (DTC, DTCC) and broker confirms for all 28 transactions. Prioritize by absolute gain/loss magnitude — start with MSFT and TSLA. Set a <strong>48-hour resolution SLA</strong> with the data sourcing team.</li>
+</ul>
+<hr>
+<h3 id="-priority-3-32-discrepancies-concentrated-in-top-exception-tickers">🟠 Priority 3: 32 Discrepancies Concentrated in Top Exception Tickers</h3>
+<ul>
+<li><strong>32 discrepancies across the portfolio</strong>, but <strong>17 of them (53%)</strong> are concentrated in just 3 tickers: TSLA (7), MSFT (5), and META (5).</li>
+<li>This concentration pattern strongly suggests a <strong>ticker-specific data feed issue</strong> — potentially a corporate action (split, merger, dividend reinvestment) being processed incorrectly — rather than isolated human error.</li>
+<li><strong>Immediate action:</strong> Pull the full transaction history for TSLA, MSFT, and META. Check for unprocessed corporate actions in the lookback window. Engage the data vendor to validate feed integrity for these securities specifically.</li>
+</ul>
+<hr>
+<h2 id="3-compliance-risks-to-flag-for-leadership">3. Compliance Risks to Flag for Leadership</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Severity</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IRS Underreporting Exposure</strong></td>
+<td>🔴 Critical</td>
+<td>117 unreported transactions create direct regulatory liability. If any fall under covered security rules (post-2011 equities), broker is legally obligated to report. Non-compliance is not discretionary.</td>
+</tr>
+<tr>
+<td><strong>Gain/Loss Misstatement Risk</strong></td>
+<td>🔴 Critical</td>
+<td>GOOGL (+$88,162) and NVDA (+$101,711) show significant gains with 2–3 discrepancies each. Even small cost basis errors on these positions produce <strong>material tax misstatements</strong> for clients.</td>
+</tr>
+<tr>
+<td><strong>MSFT Loss Integrity</strong></td>
+<td>🟠 High</td>
+<td>-$169,044.15 is the largest single-ticker loss on the book. With 5 discrepancies and an avg loss of -$7,349/transaction, this position needs <strong>independent reconciliation</strong> before any tax-loss harvesting strategies are communicated to clients.</td>
+</tr>
+<tr>
+<td>**Short</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="deep-dive-tsla-discrepancy-analysis">==================================================
+DEEP DIVE: TSLA DISCREPANCY ANALYSIS</h1>
+<h1 id="tsla-discrepancy-root-cause-analysis">TSLA Discrepancy Root Cause Analysis</h1>
+<p><strong>7 Discrepancies — Highest Exception Count in Portfolio</strong></p>
+<hr>
+<h2 id="why-tsla-is-structurally-prone-to-cost-basis-errors">Why TSLA Is Structurally Prone to Cost Basis Errors</h2>
+<p>Before running any checks, it helps to understand <strong>why TSLA specifically</strong> tends to generate more cost basis complexity than a typical equity. Three characteristics make it unusually error-prone in retail brokerage environments:</p>
+<ol>
+<li><strong>Extreme price volatility</strong> — Large intraday swings increase the likelihood that lot-matching logic (FIFO, specific ID, average cost) produces materially different results depending on which method was applied or defaulted, and small timing errors in trade capture have outsized dollar impact.</li>
+<li><strong>High retail trading frequency</strong> — TSLA is one of the most actively traded retail names, meaning accounts often hold <strong>multiple open lots simultaneously</strong> across different acquisition dates and prices, making lot identification and wash sale tracking significantly more complex.</li>
+<li><strong>Corporate action history</strong> — TSLA executed a <strong>5-for-1 stock split (August 2020)</strong> and a <strong>3-for-1 stock split (August 2022)</strong>. Any positions with acquisition dates predating either split require adjusted cost basis, and systems that did not correctly propagate those adjustments will carry silent errors forward indefinitely.</li>
+</ol>
+<hr>
+<h2 id="most-likely-root-causes-ranked-by-probability">Most Likely Root Causes, Ranked by Probability</h2>
+<hr>
+<h3 id="-1-stock-split-adjustment-failures-highest-probability">🔴 1. Stock Split Adjustment Failures <em>(Highest Probability)</em></h3>
+<p><strong>What happens:</strong> When TSLA split 5-for-1 in 2020 and 3-for-1 in 2022, every pre-split tax lot needed two things applied simultaneously — <strong>share quantity multiplied</strong> and <strong>per-share cost basis divided</strong> by the split factor. If the corporate action processing system applied one without the other, or applied them to the wrong lot layer, the cost basis is wrong in a way that is not immediately visible until reconciliation.</p>
+<p><strong>Why it's common in retail:</strong> Many retail brokerage platforms process corporate actions through a batch overnight job. If any lot was in a pending, transferred, or margin state at the time of the split record date, it may have been <strong>excluded from the batch</strong> and never corrected.</p>
+<p><strong>The silent risk:</strong> A pre-2020 TSLA lot with an unadjusted cost basis would reflect the pre-split per-share price — roughly <strong>15x too high</strong> after both splits are applied. This would generate a phantom loss on paper that is entirely a data artifact.</p>
+<hr>
+<h3 id="-2-wash-sale-rule-misapplication-or-non-application">🔴 2. Wash Sale Rule Misapplication or Non-Application</h3>
+<p><strong>What happens:</strong> A wash sale occurs when a security is sold at a loss and the <strong>same or substantially identical security is purchased within 30 days</strong> before or after the sale. The disallowed loss must be added to the cost basis of the replacement lot. TSLA's volatility and high retail trading frequency make wash sale triggering events extremely common.</p>
+<p><strong>Why it's common in retail:</strong> Wash sale tracking is computationally intensive across accounts — especially when the same client holds TSLA in <strong>multiple accounts</strong> (taxable, IRA, spouse's account). Many retail systems only track wash sales within a single account, missing cross-account triggers entirely. When the disallowed loss adjustment is not carried into the replacement lot's cost basis, every downstream gain/loss calculation on that lot is wrong.</p>
+<p><strong>What this looks like in your data:</strong> A transaction showing a realized loss on TSLA that should have been fully or partially disallowed, with no offsetting cost basis adjustment on the replacement lot.</p>
+<hr>
+
+</body>
+</html>

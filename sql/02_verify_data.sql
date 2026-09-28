@@ -3,9 +3,25 @@
 -- Run after loading CSV files
 -- =============================================
 
-SELECT COUNT(*) AS transaction_count FROM transactions;
-SELECT COUNT(*) AS lot_count FROM cost_basis_lots;
-SELECT COUNT(*) AS report_count FROM tax_reporting;
+-- Summary row counts - all three in one view
+SELECT 
+    'transactions' AS table_name,
+    COUNT(*) AS row_count
+FROM transactions
+
+UNION ALL
+
+SELECT 
+    'cost_basis_lots',
+    COUNT(*)
+FROM cost_basis_lots
+
+UNION ALL
+
+SELECT 
+    'tax_reporting',
+    COUNT(*)
+FROM tax_reporting;
 
 -- Quick preview of each table
 SELECT * FROM transactions LIMIT 5;

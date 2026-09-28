@@ -1,0 +1,34 @@
+   table_name    | row_count 
+-----------------+-----------
+ transactions    |       500
+ cost_basis_lots |       300
+ tax_reporting   |       200
+(3 rows)
+
+ transaction_id | account_id | ticker | transaction_type | transaction_date | quantity | price_per_share | total_amount | cost_basis_method |  status   
+----------------+------------+--------+------------------+------------------+----------+-----------------+--------------+-------------------+-----------
+ TXN0001        | ACC007     | MSFT   | SELL             | 2020-03-06       |       82 |           133.5 |        10947 | FIFO              | PROCESSED
+ TXN0002        | ACC042     | NVDA   | BUY              | 2022-07-08       |       12 |                 |              | SPEC_ID           | PROCESSED
+ TXN0003        | ACC022     | TSLA   | BUY              | 2021-03-16       |       36 |          657.07 |     23654.52 | FIFO              | PROCESSED
+ TXN0004        | ACC003     | JPM    | BUY              | 2022-02-14       |       14 |          119.56 |      1673.84 | FIFO              | PROCESSED
+ TXN0005        | ACC013     | MSFT   | BUY              | 2023-09-16       |       71 |          269.88 |     19161.48 | FIFO              | PROCESSED
+(5 rows)
+
+ lot_id  | account_id | ticker | acquisition_date | quantity | cost_per_share | cost_basis_total | is_closed 
+---------+------------+--------+------------------+----------+----------------+------------------+-----------
+ LOT0001 | ACC010     | TSLA   | 2019-01-22       |       47 |         359.15 |         16880.05 | t
+ LOT0002 | ACC009     | META   | 2020-08-10       |       67 |         661.53 |         44322.51 | f
+ LOT0003 | ACC032     | JPM    | 2020-09-05       |       69 |          56.24 |          3880.56 | t
+ LOT0004 | ACC019     | AMZN   | 2023-06-20       |       99 |         372.83 |         36910.17 | t
+ LOT0005 | ACC027     | NVDA   | 2021-03-19       |       71 |         330.23 |         23446.33 | t
+(5 rows)
+
+ report_id | account_id | ticker | sale_date  | proceeds | cost_basis | gain_loss | holding_period | reported_to_irs |   status    
+-----------+------------+--------+------------+----------+------------+-----------+----------------+-----------------+-------------
+ RPT0001   | ACC042     | JPM    | 2023-03-06 |  7351.09 |   16342.65 |  -8991.56 | SHORT          | f               | VALID
+ RPT0002   | ACC018     | AAPL   | 2022-05-10 | 17959.23 |   13126.23 |      4833 | LONG           | f               | VALID
+ RPT0003   | ACC031     | TSLA   | 2024-07-14 | 22894.33 |   24269.02 |  -1374.69 | LONG           | t               | DISCREPANCY
+ RPT0004   | ACC026     | GOOGL  | 2023-08-14 |   9823.5 |    42477.4 |  -32653.9 | SHORT          | t               | VALID
+ RPT0005   | ACC010     | AMZN   | 2024-12-02 |  8655.93 |    5732.37 |   2923.56 | SHORT          | f               | VALID
+(5 rows)
+

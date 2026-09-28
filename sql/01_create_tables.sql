@@ -1,7 +1,7 @@
 -- =============================================
 -- Apex Tax & Cost Basis Analyzer
 -- Step 1: Create tables
--- Run once on initial setup
+-- Run once on initial setup in pgAdmin or PSQL when first building the database
 -- =============================================
 
 CREATE TABLE transactions (

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SOP_Tax_Cost_Basis_Data_Quality.md</title>
+<title>management_report.md</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
 <style>
@@ -365,79 +365,80 @@ code {
           : 'default'
     });
   </script>
-<h1 id="standard-operating-procedure">Standard Operating Procedure</h1>
-<h2 id="tax--cost-basis-data-quality-review">Tax &amp; Cost Basis Data Quality Review</h2>
-<p><strong>Version:</strong> 1.0<br>
-<strong>Last Updated:</strong> 09/17/2026<br>
-<strong>Owner:</strong> Tax &amp; Cost Basis Operations Team</p>
+<h1 id="tax-reporting-data-quality-brief">Tax Reporting Data Quality Brief</h1>
+<p><strong>Prepared for: Operations Management</strong></p>
 <hr>
-<h2 id="purpose">Purpose</h2>
-<p>This SOP defines the standard process for conducting monthly data quality
-reviews of securities transaction data to ensure accurate cost basis
-calculation and IRS tax reporting compliance.</p>
+<h2 id="1-executive-summary">1. Executive Summary</h2>
+<p>Our tax reporting portfolio shows <strong>meaningful data quality concerns that require prompt action before filing deadlines.</strong> Of 200 total reports, <strong>30% carry either discrepancies or missing cost basis data</strong>, and <strong>58.5% remain unfiled with the IRS</strong>. With $76,310.34 in realized gains/losses split across 93 short-term and 107 long-term positions, accurate cost basis integrity is critical to ensure correct tax treatment and avoid regulatory exposure.</p>
 <hr>
-<h2 id="scope">Scope</h2>
-<p>Applies to all transaction data processed through the Tax &amp; Cost Basis
-platform including BUY/SELL transactions, cost basis lot assignments,
-and 1099-B tax reporting records.</p>
+<h2 id="2-top-3-issues-requiring-immediate-attention">2. Top 3 Issues Requiring Immediate Attention</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Issue</th>
+<th>Scope</th>
+<th>Risk Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴 <strong>#1</strong></td>
+<td>Reports Not Filed with IRS</td>
+<td>117 of 200</td>
+<td><strong>Critical</strong></td>
+</tr>
+<tr>
+<td>🟠 <strong>#2</strong></td>
+<td>Reports with Discrepancies</td>
+<td>32 of 200 (16%)</td>
+<td><strong>High</strong></td>
+</tr>
+<tr>
+<td>🟡 <strong>#3</strong></td>
+<td>Missing Cost Basis Data</td>
+<td>28 of 200 (14%)</td>
+<td><strong>High</strong></td>
+</tr>
+</tbody>
+</table>
 <hr>
-<h2 id="process-steps">Process Steps</h2>
-<h3 id="step-1--run-data-quality-checks-day-1-2-of-month">Step 1 — Run Data Quality Checks (Day 1-2 of month)</h3>
+<h2 id="3-recommended-actions">3. Recommended Actions</h2>
+<h3 id="-priority-1--117-unfiled-reports">🔴 Priority 1 — 117 Unfiled Reports</h3>
 <ul>
-<li>Execute data_quality_checks.sql against current month data</li>
-<li>Document issue counts in the Data Quality Log</li>
-<li>Flag any variance &gt; $0.01 between calculated and recorded amounts</li>
+<li><strong>Immediately triage</strong> the 117 reports into two buckets: <em>ready to file</em> vs. <em>blocked by data issues</em></li>
+<li>Identify which overlap with the 32 discrepancy and 28 missing cost basis reports — these are likely blockers</li>
+<li>Set an internal filing deadline <strong>5 business days ahead</strong> of IRS deadlines to create buffer</li>
+<li>Assign owner accountability per report batch</li>
 </ul>
-<h3 id="step-2--triage-issues-by-priority">Step 2 — Triage Issues By Priority</h3>
-<p><strong>Priority 1 — Immediate Action Required:</strong></p>
+<h3 id="-priority-2--32-discrepancy-reports">🟠 Priority 2 — 32 Discrepancy Reports</h3>
 <ul>
-<li>Missing cost basis on tax reports</li>
-<li>Gain/loss calculation variances</li>
-<li>ERROR status transactions above $10,000</li>
+<li>Pull a discrepancy detail report; categorize by type <em>(e.g., price mismatches, lot misalignments, wash sale adjustments)</em></li>
+<li>Escalate any discrepancies affecting <strong>gain/loss classification</strong> (short vs. long term) immediately — these directly impact tax liability</li>
+<li>Resolve or document overrides with supporting rationale before filing</li>
 </ul>
-<p><strong>Priority 2 — Resolve Within 5 Business Days:</strong></p>
+<h3 id="-priority-3--28-missing-cost-basis-reports">🟡 Priority 3 — 28 Missing Cost Basis Reports</h3>
 <ul>
-<li>PENDING transactions older than 3 days</li>
-<li>Discrepancies in tax reporting status</li>
-<li>Missing price data on transactions</li>
-</ul>
-<p><strong>Priority 3 — Monitor:</strong></p>
-<ul>
-<li>Zero quantity transactions</li>
-<li>Unreported records approaching IRS deadline</li>
-</ul>
-<h3 id="step-3--generate-management-report">Step 3 — Generate Management Report</h3>
-<ul>
-<li>Run analysis.py to produce summary statistics</li>
-<li>Run ai_analysis.py to generate executive summary</li>
-<li>Distribute to Operations Manager by Day 3</li>
-</ul>
-<h3 id="step-4--resolution-tracking">Step 4 — Resolution Tracking</h3>
-<ul>
-<li>Log all issues in the Exception Tracking Report</li>
-<li>Update status daily until resolved</li>
-<li>Escalate unresolved Priority 1 items to team lead after 24 hours</li>
-</ul>
-<h3 id="step-5--month-end-sign-off">Step 5 — Month End Sign-Off</h3>
-<ul>
-<li>Confirm all Priority 1 issues resolved</li>
-<li>Validate IRS reporting status for all SELL transactions</li>
-<li>Archive monthly report with issue log</li>
-</ul>
-<hr>
-<h2 id="key-contacts">Key Contacts</h2>
-<ul>
-<li>Operations Manager: [Name]</li>
-<li>Tax Reporting Lead: [Name]</li>
-<li>Product Team: [Name]</li>
+<li>Initiate <strong>cost basis recovery workflow</strong>: check custodian feeds, transfer statements, and legacy records</li>
+<li>For positions where cost basis is unrecoverable, apply default methodology per IRS rules <em>(e.g., FIFO)</em> and flag for client notification</li>
+<li>Prioritize any missing basis tied to <strong>short-term positions</strong> — these carry higher tax rates and greater client impact</li>
 </ul>
 <hr>
-<h2 id="related-documents">Related Documents</h2>
-<ul>
-<li>Data Quality Check SQL Scripts</li>
-<li>Exception Tracking Report Template</li>
-<li>IRS 1099-B Filing Guidelines</li>
-</ul>
+<h2 id="4-compliance-risks-to-flag">4. Compliance Risks to Flag</h2>
+<blockquote>
+<p>⚠️ <strong>Late Filing Penalties</strong> — 117 unfiled reports create direct IRS penalty exposure. Penalties begin at <strong>$60–$310 per return</strong> depending on latency.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Incorrect Gain/Loss Reporting</strong> — Unresolved discrepancies risk misclassifying short-term vs. long-term gains, potentially <strong>understating client tax liability.</strong></p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Missing Cost Basis = IRS Default</strong> — If cost basis is not established before filing, the IRS may treat proceeds as <strong>100% gain</strong>. This is a significant client harm risk.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Overlap Risk</strong> — If any reports carry <em>both</em> a discrepancy <em>and</em> missing cost basis, those are your <strong>highest-risk filings</strong> and should be isolated immediately.</p>
+</blockquote>
+<hr>
+<p><strong>Recommended Next Step:</strong> Schedule a 30-minute triage call with the tax ops and data teams this week to assign ownership and set resolution deadlines by report category.</p>
 
 </body>
 </html>
