@@ -26,12 +26,16 @@ Plotly · Power BI · Jupyter Notebook · Shell (Bash) · PSQL
 
 ```
 apex-tax-cost-basis-analyzer/
-├── data/ — CSV files
-├── docs/ — SOP documentation
-├── notebooks/ — synthetic data generator + analysis scripts + Claude AI reporting
-├── reports/ — AI-generated management report + powerbi operational summary dashboard
-├── sql/ — data quality validation queries
-└── visualizations/ — Plotly HTML charts
+├── data/           — CSV files
+├── docs/           — SOP documentation
+├── notebooks/      — data generator + analysis scripts + 
+│                     Claude AI reporting
+├── reports/        — AI management reports + 
+│                     Power BI dashboard
+├── sql/            — data quality validation queries
+├── visualizations/ — Plotly HTML charts
+├── setup_data.sh   — data setup pipeline (run once)
+└── run_pipeline.sh — analysis pipeline (run anytime)
 ```
 
 ---
